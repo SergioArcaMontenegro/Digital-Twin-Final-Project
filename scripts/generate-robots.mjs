@@ -15,7 +15,7 @@
 //   Anclajes para piezas dinámicas: CB_A (J1) / CB_B (J2) equilibrador de muelle,
 //   PR_A (J1) / PR_B (J3) biela del paralelogramo del paletizador.
 //   Partes móviles de herramienta: Bit, Pad, Driver, Clamp_L, Clamp_R.
-// Cotas en src/robots/robotSpecs.js (metros).
+// Cotas en shared/robotSpecs.js (metros), las mismas que usa la cinemática inversa.
 // ─────────────────────────────────────────────────────────────────────────────
 import fs from 'node:fs';
 import path from 'node:path';
@@ -24,7 +24,7 @@ import * as THREE from 'three';
 import { GLTFExporter } from 'three/examples/jsm/exporters/GLTFExporter.js';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { mergeGeometries, mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
-import { ROBOT_SPECS, TOOL_SPECS, ROBOT_MODELS } from '../src/robots/robotSpecs.js';
+import { ROBOT_SPECS, TOOL_SPECS, ROBOT_MODELS } from '../shared/robotSpecs.js';
 
 globalThis.FileReader ??= class {
   readAsArrayBuffer(blob) { blob.arrayBuffer().then((b) => { this.result = b; this.onloadend?.(); }); }
