@@ -1,0 +1,15 @@
+{
+  "name": "Planta de madera · App del operario",
+  "short_name": "Planta",
+  "description": "Producción del turno, pedidos, tareas e incidencias de la planta de madera.",
+  "start_url": "/app/",
+  "scope": "/app/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0e141b",
+  "theme_color": "#0e141b",
+  "lang": "es",
+  "icons": [
+    { "src": "/app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

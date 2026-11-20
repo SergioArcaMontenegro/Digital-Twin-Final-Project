@@ -1,8 +1,14 @@
 services:
   gemelo-digital:
     build: .
-    image: gemelo-digital-celdas:latest
+    image: gemelo-digital-madera:latest
     container_name: gemelo-digital
     ports:
-      - "8080:80"
+      - "8080:8080"          # visor 3D, /admin, /app y WebSocket /ws
+    volumes:
+      - planta:/data         # estado de la simulación (sobrevive a reinicios)
     restart: unless-stopped
+    stop_grace_period: 10s   # da tiempo a guardar el estado al parar
+
+volumes:
+  planta:

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import { ROBOT_MODELS } from '../robots/robotSpecs';
+import { ROBOT_MODELS } from '../../shared/robotSpecs.js';
 
 export const modelUrl = (key) => `${import.meta.env.BASE_URL}models/${ROBOT_MODELS[key].file}`;
 Object.keys(ROBOT_MODELS).forEach((k) => useGLTF.preload(modelUrl(k)));

@@ -1,0 +1,15 @@
+import { Hub } from '../shared/sim/hub.js';
+const hub = new Hub();
+const got = {};
+const c = hub.connect((m) => { got[m.type] = (got[m.type] || 0) + 1; if (m.type === 'reply') console.log('reply', JSON.stringify(m).slice(0, 160)); });
+hub.handle(c, { type: 'hello', want: ['tick', 'scene', 'state'] });
+hub.handle(c, { type: 'action', id: 1, action: 'setSimSpeed', payload: { speed: 60 } });
+hub.handle(c, { type: 'login', id: 2, username: 'digitaltwins', pin: 'digitaltwins2026' });
+hub.handle(c, { type: 'action', id: 3, action: 'setSimSpeed', payload: { speed: 60 } });
+hub.handle(c, { type: 'action', id: 4, action: 'buyLogs', payload: { species: 'nogal', logs: 8 } });
+hub.handle(c, { type: 'action', id: 41, action: 'createWorker', payload: { name: 'Carlos Ruiz', username: 'cruiz', pin: 'sierra1', role: 'aserrador', shift: 'M' } });
+hub.handle(c, { type: 'login', id: 5, username: 'cruiz', pin: 'sierra1' });
+hub.handle(c, { type: 'action', id: 6, action: 'setSimSpeed', payload: { speed: 60 } });
+hub.handle(c, { type: 'action', id: 7, action: 'report', payload: { text: 'Ruido raro en la sierra' } });
+for (let i = 0; i < 50; i++) hub.step(0.1);
+console.log(got, 'tick', JSON.stringify(hub.world.tick()).length, 'scene', JSON.stringify(hub.world.scene()).length, 'state', JSON.stringify(hub.stateFor(c)).length);
